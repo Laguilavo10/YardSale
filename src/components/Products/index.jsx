@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { ProductCard } from "../ProductCard"
-import "../../styles/Products.css"
+// import "../../styles/Products.css"
 import { useData } from "../../context/user"
 
 export function Products() {

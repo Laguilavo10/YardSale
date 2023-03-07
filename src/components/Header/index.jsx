@@ -1,13 +1,15 @@
-import "../../styles/Header.css"
+// import "../../styles/Header.css"
 
 import { useToggle } from "../../hooks/useToggle"
 import { exportImg } from "../../utils/exportImg"
 import { adminToggles } from "../../utils/adminToggle"
 
-import { MenuDesktop } from "../MenuDesktop"
-import { MyOrder } from "../MyOrder"
-import { MenuMobile } from "../MenuMobile"
+// import { MenuDesktop } from "../MenuDesktop"
+// import { MyOrder } from "../MyOrder"
+// import { MenuMobile } from "../MenuMobile"
 import { useData } from "../../context/user"
+import Image from "next/image"
+import Link from "next/link"
 
 export function Header() {
   
@@ -24,34 +26,34 @@ export function Header() {
 
   return (
     <nav>
-      <img
+      {/* <img
         src={exportImg("menu")}
         alt="menu"
         className="menu"
         onClick={() => adminToggles(menuMobile, myOrder)}
-      />
+      /> */}
 
       <div className="navbar-left">
-        <img src={exportImg("l_YS")} alt="logo" className="logo-mobile" />
+        <Image src={exportImg("l_YS")} alt="logo" className="logo-mobile" />
 
         <ul>
           <li>
-            <a href="/">All</a>
+            <Link href="/">All</Link>
           </li>
           <li>
-            <a href="/">Clothes</a>
+            <Link href="/">Clothes</Link>
           </li>
           <li>
-            <a href="/">Electronics</a>
+            <Link href="/">Electronics</Link>
           </li>
           <li>
-            <a href="/">Furnitures</a>
+            <Link href="/">Furnitures</Link>
           </li>
           <li>
-            <a href="/">Toys</a>
+            <Link href="/">Toys</Link>
           </li>
           <li>
-            <a href="/">Others</a>
+            <Link href="/">Others</Link>
           </li>
         </ul>
       </div>
@@ -67,18 +69,18 @@ export function Header() {
             className="navbar-shopping-cart pointer"
             onClick={() => adminToggles(myOrder, [menuDesktop, menuMobile])}
           >
-            <img src={exportImg("cart")} alt="shopping cart" />
+            <Image src={exportImg("cart")} alt="shopping cart" />
             <div>{cart.length}</div>
           </li>
         </ul>
       </div>
-      {menuDesktop.isOpen && <MenuDesktop />}
+      {/* {menuDesktop.isOpen && <MenuDesktop />}
       {menuMobile.isOpen && <MenuMobile />}
       {myOrder.isOpen && cart.length != 0 && (
         <MyOrder
           closeModal={() => adminToggles(myOrder, [menuDesktop, menuMobile])}
         />
-      )}
+      )} */}
     </nav>
   )
 }

@@ -9,7 +9,6 @@ nav {
 }
 .logo-mobile {
   width: 100px;
-  justify-self: center;
 }
 .navbar-left ul,
 .navbar-right ul {
@@ -23,6 +22,7 @@ nav {
 }
 .navbar-left {
   display: flex;
+  align-items: center;
 }
 .navbar-left ul {
   margin-left: 12px;

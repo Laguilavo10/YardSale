@@ -1,3 +1,4 @@
+import Image from "next/image"
 import { useState } from "react"
 import { useData } from "../../context/user"
 import { exportImg } from "../../utils/exportImg"
@@ -23,14 +24,14 @@ export function ProductCard({dataCard}) {
   return (
     <>  
       <div className="product-card">
-        <img onClick={showDetails} src={images[0]} alt="" className="pointer"/>
+        <Image width='1000' height='1000' onClick={showDetails} src={images[0]} alt="" className="pointer"/>
         <div className="product-info">
           <div>
             <p>${price}</p>
             <p>{title}</p>
           </div>
           <figure className="pointer">
-            <img src={exportImg("addToCard")} alt="" onClick={()=>addToCard(dataCard)} />
+            <Image width='auto' height='auto' src={exportImg("addToCard")} alt="" onClick={()=>addToCard(dataCard)} />
           </figure>
         </div>
       </div>

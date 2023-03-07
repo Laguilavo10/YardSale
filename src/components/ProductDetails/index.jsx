@@ -1,4 +1,4 @@
-import "../../styles/ProductDetails.css"
+// import "../../styles/ProductDetails.css"
 import { exportImg } from "../../utils/exportImg"
 
 export function ProductDetails({ data, setIsOpen }) {
