@@ -1,13 +1,13 @@
-import { useEffect, useState } from "react"
-import { ProductCard } from "../ProductCard"
+import { useEffect, useState } from 'react'
+import { ProductCard } from '../ProductCard'
 // import "../../styles/Products.css"
-import { useData } from "../../context/user"
+import { useData } from '../../context/user'
 
-export function Products() {
+export function Products () {
   const [data, setData] = useState([])
 
   useEffect(() => {
-    const API_URL = "https://api.escuelajs.co/api/v1/products?limit=15&offset=2"
+    const API_URL = 'https://api.escuelajs.co/api/v1/products?limit=15&offset=2'
 
     fetch(API_URL)
       .then((res) => res.json())
@@ -15,18 +15,18 @@ export function Products() {
   }, [])
 
   const { setState: setCart } = useData()
+  console.log('dsjahjdk')
 
   // es diferente card(info producto) != cart (carrito de compras)
-  
+
   return (
     <>
       {data.length === 0 && <h1>Cargando... no desesperes</h1>}
-      <section className="main-container">
-        <div className="cards-container">
+      <section className='main-container'>
+        <div className='cards-container'>
           {data.map((card, index) => (
             <ProductCard key={index} dataCard={card} setCart={setCart} />
           ))}
-          
         </div>
       </section>
     </>

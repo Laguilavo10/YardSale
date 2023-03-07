@@ -1,50 +1,54 @@
+import Link from 'next/link'
 import React from 'react'
-import '../../styles/MenuMobile.css'
 
-export function MenuMobile() {
+export function MenuMobile () {
   return (
-    <div className="mobile-menu">
-    <ul>
-      <li>
-        <a href="/">CATEGORIES</a>
-      </li>
-      <li>
-        <a href="/">All</a>
-      </li>
-      <li>
-        <a href="/">Clothes</a>
-      </li>
-      <li>
-        <a href="/">Electronics</a>
-      </li>
-      <li>
-        <a href="/">Furnitures</a>
-      </li>
-      <li>
-        <a href="/">Toys</a>
-      </li>
-      <li>
-        <a href="/">Other</a>
-      </li>
-    </ul>
+    <div className='mobile-menu'>
+      <ul>
+        <li>
+          <Link href='/'>CATEGORIES</Link>
+        </li>
+        <li>
+          <Link href='/'>All</Link>
+        </li>
+        <li>
+          <Link href='/'>Clothes</Link>
+        </li>
+        <li>
+          <Link href='/'>Electronics</Link>
+        </li>
+        <li>
+          <Link href='/'>Furnitures</Link>
+        </li>
+        <li>
+          <Link href='/'>Toys</Link>
+        </li>
+        <li>
+          <Link href='/'>Other</Link>
+        </li>
+      </ul>
 
-    <ul>
-      <li>
-        <a href="/">My orders</a>
-      </li>
-      <li>
-        <a href="/">My account</a>
-      </li>
-    </ul>
+      <ul>
+        <li>
+          <Link href='/'>My orders</Link>
+        </li>
+        <li>
+          <Link href='/'>My account</Link>
+        </li>
+      </ul>
 
-    <ul>
-      <li>
-        <a href="/" className="email">platzi@example.com</a>
-      </li>
-      <li>
-        <a href="/" className="sign-out">Sign out</a>
-      </li>
-    </ul>
-  </div>
+      <ul>
+        <li>
+          <Link href='/' className='email'>
+            platzi@example.com
+          </Link>
+        </li>
+        <li>
+          <Link href='/' className='sign-out'>
+            Sign out
+          </Link>
+        </li>
+      </ul>
+    </div>
   )
 }

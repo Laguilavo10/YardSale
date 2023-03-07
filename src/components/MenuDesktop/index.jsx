@@ -1,22 +1,24 @@
+import Link from 'next/link'
 import React from 'react'
-import '../../styles/MenuDesktop.css'
 
-export function MenuDesktop() {
+export function MenuDesktop () {
   return (
-    <div className="desktop-menu">
-    <ul>
-      <li>
-        <a href="/" className="title">My orders</a>
-      </li>
+    <div className='desktop-menu'>
+      <ul>
+        <li>
+          <Link href='/' className='title'>
+            My orders
+          </Link>
+        </li>
 
-      <li>
-        <a href="/">My account</a>
-      </li>
+        <li>
+          <Link href='/'>My account</Link>
+        </li>
 
-      <li>
-        <a href="/">Sign out</a>
-      </li>
-    </ul>
-  </div>
+        <li>
+          <Link href='/'>Sign out</Link>
+        </li>
+      </ul>
+    </div>
   )
 }

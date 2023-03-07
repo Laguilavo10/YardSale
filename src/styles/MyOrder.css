@@ -19,6 +19,7 @@
   margin-top: 61px;
   transition: 2s ease;
   animation: swipeLeft 0.26s ease;
+  top: 0;
 }
 
 .title-container {
