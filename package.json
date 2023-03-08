@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "lint:fix": "eslint src/ --fix"
   },
   "dependencies": {
     "eslint": "8.35.0",
@@ -19,6 +20,9 @@
     "standard": "^17.0.0"
   },
   "eslintConfig": {
+    "rules": {
+      "space-before-function-paren": "off"
+    },
     "extends": [
       "./node_modules/standard/eslintrc.json",
       "next/core-web-vitals"

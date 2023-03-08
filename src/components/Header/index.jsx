@@ -33,7 +33,7 @@ export function Header() {
       />
 
       <div className='navbar-left'>
-        <Image src={exportImg('l_YS')} alt='logo' className='logo-mobile' />
+        <Image src={exportImg('lYS')} alt='logo' className='logo-mobile' />
 
         <ul>
           <li>

@@ -38,7 +38,7 @@ export default function Login () {
       {error && <h1>Usuario Invalido</h1>}
       <div className='login'>
         <div className='form-container'>
-          <Image src={exportImg('l_YS')} alt='logo' className='logo' />
+          <Image src={exportImg('lYS')} alt='logo' className='logo' />
 
           <form action='/' className='form' onSubmit={validateUser} ref={form}>
             <label htmlFor='email' className='label'>

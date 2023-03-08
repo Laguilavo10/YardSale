@@ -9,7 +9,7 @@ import '@styles/MyOrder.css'
 
 import { CartProvider } from '@context/user'
 
-function MyApp ({ Component, pageProps }) {
+function MyApp({ Component, pageProps }) {
   return (
     <>
       <CartProvider value={[]}>

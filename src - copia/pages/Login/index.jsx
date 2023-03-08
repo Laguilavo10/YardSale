@@ -29,7 +29,6 @@ export function Login () {
   setTimeout(() => {
     setError(false)
   }, 3000)
-  const a = () => {}
 
   return (
     <>
