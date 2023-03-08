@@ -15,7 +15,6 @@ export function Products () {
   }, [])
 
   const { setState: setCart } = useData()
-  console.log('dsjahjdk')
 
   // es diferente card(info producto) != cart (carrito de compras)
 
