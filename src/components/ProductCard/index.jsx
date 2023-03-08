@@ -8,7 +8,7 @@ export function ProductCard({ dataCard }) {
   const { setState: setCart } = useData()
 
   const [isOpen, setIsOpen] = useState(false)
-  const [isAdded, setIsAdded] = useState('addToCard')
+  const [isAdded, setIsAdded] = useState('addToCart')
 
   const { images, price, title } = dataCard
 
@@ -16,12 +16,12 @@ export function ProductCard({ dataCard }) {
     setIsOpen(true)
   }
 
-  const addToCard = (product) => {
-    if (isAdded === 'addedToCard') return
+  const addToCart = (product) => {
+    if (isAdded === 'addedToCart') return
     setCart((prevState) => [...prevState, product])
-    setIsAdded('addedToCard')
+    setIsAdded('addedToCart')
     setTimeout(() => {
-      setIsAdded('addToCard')
+      setIsAdded('addToCart')
     }, 3000)
   }
 
@@ -49,12 +49,20 @@ export function ProductCard({ dataCard }) {
               height='auto'
               src={exportImg(isAdded)}
               alt=''
-              onClick={() => addToCard(dataCard)}
+              onClick={() => addToCart(dataCard)}
             />
           </figure>
         </div>
       </div>
-      {isOpen && <ProductDetails data={dataCard} setIsOpen={setIsOpen} />}
+      {isOpen && (
+        <ProductDetails
+          data={dataCard}
+          isOpen={isOpen}
+          setIsOpen={setIsOpen}
+          isAdded={isAdded}
+          addToCart={() => (addToCart(dataCard))}
+        />
+      )}
     </>
   )
 }
