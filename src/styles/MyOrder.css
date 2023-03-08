@@ -14,7 +14,7 @@
   position: absolute;
   right: 0;
   background-color: var(--theme);
-  border: 1px solid var(--very-light-pink);
+  box-shadow: -3px 2px 5px 1px #00000067;
   border-radius: 5px;
   margin-top: 61px;
   transition: 2s ease;

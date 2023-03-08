@@ -9,7 +9,7 @@ import addToCart from '../assets/icons/bt_add_to_cart.svg'
 import addedToCart from '../assets/icons/bt_added_to_cart.svg'
 
 import flecha from '../assets/icons/flechita.svg'
-import close from '../assets/icons/icon_close.png'
+import close from '../assets/icons/icon_close.svg'
 
 const IMGS = { iBF, iYS, lBF, lYS, menu, cart, addToCart, addedToCart, flecha, close }
 

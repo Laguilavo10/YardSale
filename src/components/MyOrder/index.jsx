@@ -24,7 +24,7 @@ export function MyOrder ({ closeModal }) {
         {cart.map((item, index) => (
           <div className='shopping-cart' key={item.id}>
             <figure>
-              <Image width={15} height={15} src={item.images[0]} alt='bike' />
+              <Image width={100} height={100} src={item.images[0]} alt='bike' />
             </figure>
             <p>{item.title}</p>
             <p>${item.price}</p>
