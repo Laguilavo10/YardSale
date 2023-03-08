@@ -2,9 +2,19 @@
 import Image from 'next/image'
 import { exportImg } from '../../utils/exportImg'
 
-export function ProductDetails({ data, isOpen, setIsOpen, isAdded, addToCart }) {
+export function ProductDetails({
+  data,
+  isOpen,
+  setIsOpen,
+  isAdded,
+  addToCart
+}) {
   const closeModal = () => {
     setIsOpen(false)
+  }
+  const handleClick = () => {
+    closeModal()
+    addToCart()
   }
   return (
     <>
@@ -24,7 +34,7 @@ export function ProductDetails({ data, isOpen, setIsOpen, isAdded, addToCart }) 
               height={50}
               src={exportImg(isAdded)}
               alt='add to cart'
-              onClick={addToCart}
+              onClick={handleClick}
             />
             Add to cart
           </button>
