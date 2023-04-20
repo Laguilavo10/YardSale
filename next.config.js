@@ -2,7 +2,13 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ['loremflickr.com', 'api.lorem.space']
+    // domains: ['loremflickr.com', 'api.lorem.space', 'picsum.photos', 'encrypted-tbn0.gstatic.com']
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '**'
+      }
+    ]
   }
 }
 
