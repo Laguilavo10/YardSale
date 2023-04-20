@@ -13,7 +13,7 @@
   width: 150px;
   margin-bottom: 48px;
   justify-self: center;
-  display: none;
+  /* display: none; */
 }
 .form {
   display: flex;
@@ -53,8 +53,13 @@
   font-size: var(--md);
   font-weight: bold;
   height: 50px;
+  transition: all .1s ease-in;
+}
+.primary-button:hover, .secondary-button:hover{
+  transform: scale(1.1);
 }
 .secondary-button {
+  transition: all .1s ease-in;
   background-color: var(--white);
   border-radius: 8px;
   border: 1px solid var(--hospital-green);
@@ -69,8 +74,8 @@
   margin-top: 14px;
   margin-bottom: 30px;
 }
-@media (max-width: 640px) {
+/* @media (max-width: 640px) {
   .logo {
     display: block;
   }
-}
+} */
