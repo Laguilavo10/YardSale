@@ -1,46 +1,63 @@
-import { useRef, useState } from 'react'
+/* eslint-disable camelcase */
+import { useRef } from 'react'
 import { exportImg } from '../../utils/exportImg'
-// import { USERS } from '../../utils/users'
-// import { useNavigate } from 'react-router-dom'
+import endPoints from '../../services/API'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useAuthUser } from '@context/authUser'
+import axios from 'axios'
+import { useRouter } from 'next/router'
+import cookie from 'js-cookie'
+import { toast } from 'react-hot-toast'
 
-export default function Login () {
-  const [error, setError] = useState(false)
+export default function Login() {
+  const router = useRouter()
   const form = useRef(null)
-  // const navigate = useNavigate()
+  const { setIsAuth } = useAuthUser()
+  const validateUser = async (evt) => {
+    evt.preventDefault()
+    try {
+      const dataForm = new FormData(form.current)
 
-  const validateUser = (e) => {
-    // e.preventDefault()
-    console.log('hola')
-
-    // const dataForm = new FormData(form.current)
-
-    // const data = {
-    //   username: dataForm.get('email'),
-    //   password: dataForm.get('password')
-    // }
-
-    // const isValidate = USERS.some(
-    //   (user) =>
-    //     user.username === data.username && user.password === data.password
-    // )
-
-    // isValidate ? navigate('/') : setError(true)
+      const credentials = {
+        email: dataForm.get('email'),
+        password: dataForm.get('password')
+      }
+      if (!credentials.email || !credentials.password) {
+        return
+      }
+      const { data } = await axios.post(endPoints.auth.login, credentials)
+      const { access_token } = data
+      if (access_token) {
+        const options = {
+          expires: 1
+        }
+        cookie.set('CookieAccess', access_token, options)
+        axios.defaults.headers.Authorization = `Bearer ${access_token}`
+        const { data: user } = await axios.get(
+          'https://api.escuelajs.co/api/v1/auth/profile'
+        )
+        setIsAuth(user)
+        router.push('/')
+      }
+    } catch (error) {
+      const opts = {
+        position: 'bottom-right',
+        style: {
+          border: '1px solid #ff4b4b'
+        }
+      }
+      toast.error('Email y/o contraseña incorrectas', opts)
+    }
   }
-
-  setTimeout(() => {
-    setError(false)
-  }, 3000)
 
   return (
     <>
-      {error && <h1>Usuario Invalido</h1>}
       <div className='login'>
         <div className='form-container'>
           <Image src={exportImg('lYS')} alt='logo' className='logo' />
 
-          <form action='/' className='form' onSubmit={validateUser} ref={form}>
+          <form className='form' onSubmit={validateUser} ref={form}>
             <label htmlFor='email' className='label'>
               Email address
             </label>

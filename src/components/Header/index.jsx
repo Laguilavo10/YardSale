@@ -10,8 +10,11 @@ import { MenuMobile } from '../MenuMobile'
 import { useData } from '../../context/user'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useAuthUser } from '@context/authUser'
 
 export function Header() {
+  const { isAuth } = useAuthUser()
+  // console.log(isAuth)
   const myOrder = useToggle(false)
   const menuDesktop = useToggle(false)
   const menuMobile = useToggle(false)
@@ -59,17 +62,20 @@ export function Header() {
       <div className='navbar-right'>
         <ul>
           <li
-            className='navbar-email pointer'
-            onClick={() => adminToggles(menuDesktop, myOrder)}
-          >
-            platzi@example.com
-          </li>
-          <li
             className='navbar-shopping-cart pointer'
-            onClick={() => adminToggles(myOrder, [menuDesktop, menuMobile])}
-          >
+            onClick={() => adminToggles(myOrder, [menuDesktop, menuMobile])}>
             <Image src={exportImg('cart')} alt='shopping cart' />
             <div>{cart.length}</div>
+          </li>
+          <li className='navbar-email pointer'>{isAuth.email}</li>
+          <li onClick={() => adminToggles(menuDesktop, myOrder)}>
+            <Image
+              className='navbar-avatar pointer'
+              src={isAuth.avatar ?? '/'}
+              alt='avatar'
+              width={30}
+              height={30}
+            />
           </li>
         </ul>
       </div>
