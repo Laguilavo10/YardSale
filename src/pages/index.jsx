@@ -35,6 +35,7 @@ export default function Main() {
     if (!isAuth) {
       validateAuth()
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isAuth])
 
   return (

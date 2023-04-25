@@ -6,15 +6,21 @@ import '@styles/Login.css'
 import '@styles/MenuDesktop.css'
 import '@styles/MenuMobile.css'
 import '@styles/MyOrder.css'
+import '@styles/Dashboard.css'
 
 import { CartProvider } from '@context/user'
+import { AuthProvider, useAuthUser } from '@context/authUser'
+import { Toaster } from 'react-hot-toast'
 
 function MyApp({ Component, pageProps }) {
   return (
     <>
-      <CartProvider value={[]}>
-        <Component {...pageProps} />
-      </CartProvider>
+      <AuthProvider>
+        <CartProvider value={[]}>
+          <Toaster />
+          <Component {...pageProps} />
+        </CartProvider>
+      </AuthProvider>
     </>
   )
 }

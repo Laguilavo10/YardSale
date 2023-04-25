@@ -1,0 +1,32 @@
+.dashboard-title {
+  padding: 20px;
+}
+.chart-container {
+  max-width: 600px;
+  max-height: 400px;
+  margin: 40px auto;
+}
+.table-dashboard {
+  margin: auto;
+  width: 80%;
+}
+.table-dashboard-header{
+  border-radius: 5px;
+  background-color: rgb(214, 214, 214);
+}
+.table-dashboard th, .table-dashboard td {
+  padding: 10px;
+  text-align: center;
+}
+
+.table-dashboard th:first-child, .table-dashboard td:first-child {
+  text-align: left;
+}
+
+/* .edit-btn{
+  background-color: green;
+  margin: 5px;
+}
+.delete-btn{
+
+} */
