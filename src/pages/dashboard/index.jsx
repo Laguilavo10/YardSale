@@ -19,6 +19,7 @@ export default function Dashboard() {
         <Chart data={countOccurrences(categories)} />
       </div>
       <TableDashboard data={products} />
+      <h1 className='text-light'>Hello world!</h1>
     </>
   )
 }

@@ -1,9 +1,6 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  /* outline: 1px solid tomato; */
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
   /* --theme: #202123; */
@@ -24,6 +21,7 @@ body {
   overflow-x: hidden;
 }
 
-.pointer{
-  cursor: pointer;
+
+html{
+  scroll-behavior: smooth;
 }

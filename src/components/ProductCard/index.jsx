@@ -26,10 +26,10 @@ export function ProductCard({ dataCard }) {
   }
 
   // Es diferente cart != card, (cart = carrito) / (card = tarjeta del producto)
-
+  console.log(images[0])
   return (
     <>
-      <div className='product-card'>
+      <div className='product-card duration-600 rounded-lg bg-white p-4 transition-all ease-in-out hover:scale-105 hover:shadow-2xl'>
         <Image
           width='1000'
           height='1000'
@@ -60,7 +60,7 @@ export function ProductCard({ dataCard }) {
           isOpen={isOpen}
           setIsOpen={setIsOpen}
           isAdded={isAdded}
-          addToCart={() => (addToCart(dataCard))}
+          addToCart={() => addToCart(dataCard)}
         />
       )}
     </>

@@ -16,6 +16,7 @@ export function ProductDetails({
     closeModal()
     addToCart()
   }
+  console.log(data.images)
   return (
     <>
       <div className={`${isOpen && 'background'}`} />
@@ -23,7 +24,7 @@ export function ProductDetails({
         <div className='product-detail-close' onClick={closeModal}>
           <Image width={14} height={14} src={exportImg('close')} alt='close' />
         </div>
-        <Image width={1000} height={1000} src={data.images[1]} alt='bike' />
+        <Image width={1000} height={1000} src={data.images[0]} alt='bike' />
         <div className='product-detail-info'>
           <p>${data.price}</p>
           <p>{data.title}</p>
