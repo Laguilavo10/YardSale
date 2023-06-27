@@ -21,9 +21,9 @@ export function Header() {
 
   const { state: cart } = useData()
 
-  if (cart.length === 0) {
-    // cierra modal cuando no hay nada en el carrito
-    if (myOrder.isOpen) return myOrder.setOpen(false)
+  if (cart.length === 0 && myOrder.isOpen) {
+    myOrder.setOpen(false);
+    return null;
   }
 
   return (

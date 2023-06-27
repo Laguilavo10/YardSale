@@ -19,6 +19,10 @@
   background-color: white;
   border-radius: 20px;
   z-index: 200;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  height: min-content;
 }
 
 .product-detail-close {
@@ -42,13 +46,13 @@
 .product-detail-close:hover {
   cursor: pointer;
 }
-.product-detail > img:nth-child(2) {
+/* .product-detail > img:nth-child(2) {
   width: 350px;
   height: 360px;
   object-fit: cover;
   object-position: center center;
   border-radius: 20px;
-}
+} */
 .product-detail-info {
   padding: 24px 24px 0 24px;
   width: 250px;

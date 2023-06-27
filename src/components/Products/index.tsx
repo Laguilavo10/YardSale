@@ -2,8 +2,13 @@ import { useEffect, useState } from 'react'
 import { ProductCard } from '../ProductCard'
 // import "../../styles/Products.css"
 import { useData } from '../../context/user'
+import { Product } from 'types'
 
-export function Products ({products}) {
+interface Props {
+  products: Product[] | undefined
+}
+
+export function Products({ products } : Props) {
   // const [data, setData] = useState([])
 
   // useEffect(() => {
@@ -14,8 +19,7 @@ export function Products ({products}) {
   //     .then((info) => setData(info))
   // }, [])
 
-  const { setState: setCart } = useData()
-
+  // const { setState: setCart } = useData()
   // es diferente card(info producto) != cart (carrito de compras)
 
   return (
@@ -23,8 +27,8 @@ export function Products ({products}) {
       {/* {data.length === 0 && <h1>Cargando... no desesperes</h1>} */}
       <section className='main-container bg-light'>
         <div className='cards-container'>
-          {products.map((card, index) => (
-            <ProductCard key={index} dataCard={card} setCart={setCart} />
+          {products?.map((card, index) => (
+            <ProductCard key={index} dataCard={card} />
           ))}
         </div>
       </section>

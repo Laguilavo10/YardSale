@@ -11,16 +11,20 @@ import '@styles/Dashboard.css'
 import { CartProvider } from '@context/user'
 import { AuthProvider, useAuthUser } from '@context/authUser'
 import { Toaster } from 'react-hot-toast'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
-function MyApp({ Component, pageProps }) {
+const queryClient = new QueryClient()
+function MyApp({ Component, pageProps } : any) {
   return (
     <>
-      <AuthProvider>
-        <CartProvider value={[]}>
-          {/* <Toaster /> */}
-          <Component {...pageProps} />
-        </CartProvider>
-      </AuthProvider>
+      <QueryClientProvider client={queryClient}>
+        <AuthProvider>
+          <CartProvider value={[]}>
+            {/* <Toaster /> */}
+            <Component {...pageProps} />
+          </CartProvider>
+        </AuthProvider>
+      </QueryClientProvider>
     </>
   )
 }
