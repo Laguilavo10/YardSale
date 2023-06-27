@@ -18,7 +18,6 @@ export function ProductDetails({
   isAdded,
   addToCart
 }: Props) {
-  const [isImgLoaded, setIsImgLoaded] = useState<boolean>(false)
   const closeModal = () => {
     setIsOpen(false)
   }
@@ -29,7 +28,7 @@ export function ProductDetails({
   return (
     <>
       <div className={`${isOpen && 'background'}`} />
-      <aside className='product-detail animate-duration-400 animate-jump ease-in-out'>
+      <aside className='product-detail animate-duration-400 animate-jump-in ease-in-out'>
         <div className='product-detail-close' onClick={closeModal}>
           <Image width={14} height={14} src={exportImg('close')} alt='close' />
         </div>
@@ -42,7 +41,6 @@ export function ProductDetails({
             className='h-[360px] w-[350px] animate-fade-down object-cover duration-200'
           />
         </LoadingSkeleton>
-        <img src='' alt=''/>
         <div className='product-detail-info'>
           <p>${data.price}</p>
           <p>{data.title}</p>

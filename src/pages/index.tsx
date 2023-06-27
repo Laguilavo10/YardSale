@@ -1,23 +1,25 @@
-import CounterProducts from '@components/CounterProducts'
+// import CounterProducts from '@components/CounterProducts'
 import { Header } from '@components/Header'
-import { Pagination } from '@components/Pagination'
+// import { Pagination } from '@components/Pagination'
 import { Products } from '@components/Products'
-import { useAuthUser } from '@context/authUser'
-import { type UseQueryResult, useQuery } from '@tanstack/react-query'
-import axios from 'axios'
-import { useFecth } from 'hooks/useFetch'
-import Cookies from 'js-cookie'
-import { useRouter } from 'next/router'
-import { useEffect, useState } from 'react'
-import { requester } from '@services/API'
-import { Product } from 'types'
-const LIMIT = 20
-const OFFSET = 0
+// import { useAuthUser } from '@context/authUser'
+// import { type UseQueryResult, useQuery } from '@tanstack/react-query'
+// import axios from 'axios'
+
+// import { useFecth } from 'hooks/useFetch'
+// import Cookies from 'js-cookie'
+// import { useRouter } from 'next/router'
+// import { useEffect, useState } from 'react'
+import { useQuery, gql } from '@apollo/client'
+// import { requester } from '@services/API'
+// import { Product } from 'types'
+// const LIMIT = 20
+// const OFFSET = 0
 
 export default function Main() {
-  const { isAuth, setIsAuth } = useAuthUser()
-  const [pagination, setPagination] = useState({ limit: LIMIT, offset: OFFSET })
-  const router = useRouter()
+  // const { isAuth, setIsAuth } = useAuthUser()
+  // const [pagination, setPagination] = useState({ limit: LIMIT, offset: OFFSET })
+  // const router = useRouter()
 
   // const validateAuth = async () => {
   //   const valueToken = Cookies.get('CookieAccess')
@@ -43,20 +45,30 @@ export default function Main() {
   //   if (!isAuth) {
   //     validateAuth()
   //   }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   // }, [isAuth])
 
-  const { isLoading, error, data } : UseQueryResult<Product[], unknown> = useQuery({
-    queryKey: ['products'],
-    queryFn: async () => {
-      const query = `{"query": "query { products { id title price description images} }"}`
-      const dataFetching = await requester.post('/graphql', query)
-      return dataFetching.data.data.products
+  // const { isLoading, error, data } :  = useQuery({
+  //   queryKey: ['products'],
+  //   queryFn: async () => {
+  //     const query = `{"query": "query { products { id title price description images} }"}`
+  //     const dataFetching = await requester.post('/graphql', query)
+  //     return dataFetching.data.data.products
+  //   }
+  // })
+  const query = gql`
+    query {
+      products {
+        id
+        title
+        price
+        description
+        images
+      }
     }
-  })
+  `
+  const { loading, data } = useQuery(query)
 
-  if (isLoading) return 'Loading...'
-  // if (error) return 'An error has occurred: ' + error.message
+  if (loading) return 'Loading...'
 
   return (
     <main className='min- flex h-screen flex-col gap-4 bg-light transition-all duration-100 ease-out'>
@@ -66,7 +78,7 @@ export default function Main() {
         final={products[0]?.id + pagination?.limit}
         total={97}
       /> */}
-      <Products products={data} />
+      <Products products={data.products} />
       {/* <Pagination pagination={pagination} setPagination={setPagination} /> */}
     </main>
   )

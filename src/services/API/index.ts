@@ -7,7 +7,7 @@ const API = process.env.NEXT_PUBLIC_API_URL ?? ''
 //     getProduct: (id:) => `${API}/products/${id}`,
 //     getProducts: (limit, offset) =>
 //       `${API}/products?limit=${limit}&offset=${offset}`,
-//     postProducts: `${API}/products/`,
+//     postProducts: `${API}/products/`,.
 //     putProducts: (id) => `${API}/products/${id}`,
 //     deleteProducts: (id) => `${API}/products/${id}`
 //   },

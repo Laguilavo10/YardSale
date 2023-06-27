@@ -13,7 +13,6 @@ export function ProductCard({ dataCard }: { dataCard: Product }) {
 
   const [isOpen, setIsOpen] = useState(false)
   const [isAdded, setIsAdded] = useState<isAddedToCart>('addToCart')
-  const [isImgLoaded, setIsImgLoaded] = useState<boolean>(false)
 
   const { images, price, title } = dataCard
 
@@ -32,7 +31,7 @@ export function ProductCard({ dataCard }: { dataCard: Product }) {
   // Es diferente cart != card, (cart = carrito) / (card = tarjeta del producto)
   return (
     <>
-      <div className='duration-600 rounded-lg bg-white p-4 transition-all ease-in-out hover:scale-105 hover:shadow-2xl'>
+      <div className='duration-600 rounded-lg bg-white p-4 transition-all ease-in-out hover:scale-105 hover:shadow-2xl justify-around flex flex-col'>
         <LoadingSkeleton>
           <Image
             width='300'
@@ -43,13 +42,14 @@ export function ProductCard({ dataCard }: { dataCard: Product }) {
             className='object-cover'
           />
         </LoadingSkeleton>
-        <div className='product-info'>
+        <div className='mt-3 flex items-center justify-between'>
           <div>
-            <p>${price}</p>
-            <p>{title}</p>
+            <p className='font-bold mt-1'>${price}</p>
+            <p className='text-sm text-gray-500 mt-1'>{title}</p>
           </div>
-          <figure className='pointer'>
+          <figure className='m-0 cursor-pointer'>
             <Image
+              className='h-9 w-9'
               width='100'
               height='100'
               src={exportImg(isAdded)}
