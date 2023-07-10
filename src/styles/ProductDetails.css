@@ -1,15 +1,3 @@
-.background {
-  background-color: #00000098;
-  width: 100vw;
-  height: 100%;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  position: fixed;
-  z-index: 100;
-}
-
 .product-detail {
   display: flex;
   padding-bottom: 24px;

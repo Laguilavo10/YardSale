@@ -11,6 +11,8 @@ import { Products } from '@components/Products'
 // import { useRouter } from 'next/router'
 // import { useEffect, useState } from 'react'
 import { useQuery, gql } from '@apollo/client'
+import { useCategory } from '@context/useCategory'
+import SkeletonCards from '@components/SkeletonCards'
 // import { requester } from '@services/API'
 // import { Product } from 'types'
 // const LIMIT = 20
@@ -55,9 +57,10 @@ export default function Main() {
   //     return dataFetching.data.data.products
   //   }
   // })
-  const query = gql`
-    query {
-      products {
+  const { category } = useCategory()
+  const GET_PRODUCTS = gql`
+    query ($categoryId: Float!) {
+      products(categoryId: $categoryId) {
         id
         title
         price
@@ -66,9 +69,12 @@ export default function Main() {
       }
     }
   `
-  const { loading, data } = useQuery(query)
-
-  if (loading) return 'Loading...'
+  const { loading, data } = useQuery(GET_PRODUCTS, {
+    variables: { categoryId: category }
+  })
+  const cards = Array(20).fill(null)
+  // console.log(data)
+  // if (error !== undefined) return `Error! ${error.message}`
 
   return (
     <main className='min- flex h-screen flex-col gap-4 bg-light transition-all duration-100 ease-out'>
@@ -78,7 +84,16 @@ export default function Main() {
         final={products[0]?.id + pagination?.limit}
         total={97}
       /> */}
-      <Products products={data.products} />
+      {loading && (
+        <section className='main-container bg-light'>
+          <div className='cards-container mb-10 grid grid-cols-[repeat(auto-fill,240px)] place-content-center gap-7'>
+            {cards?.map((_, index) => (
+              <SkeletonCards key={index} />
+            ))}
+          </div>
+        </section>
+      )}
+      <Products products={data?.products} />
       {/* <Pagination pagination={pagination} setPagination={setPagination} /> */}
     </main>
   )

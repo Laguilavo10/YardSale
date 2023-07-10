@@ -1,7 +1,6 @@
 // import "../../styles/ProductDetails.css"
 import Image from 'next/image'
 import { exportImg } from '../../utils/exportImg'
-import { useState } from 'react'
 import { LoadingSkeleton } from '@components/LoadingSkeleton'
 
 interface Props {
@@ -27,8 +26,8 @@ export function ProductDetails({
   }
   return (
     <>
-      <div className={`${isOpen && 'background'}`} />
-      <aside className='product-detail animate-duration-400 animate-jump-in ease-in-out'>
+      <div className={`${isOpen === true ? 'bg-[#00000098] w-screen h-screen fixed z-[100] top-0 bottom-0 right-0 left-0' : ''}`} />
+      <aside className='product-detail animate-duration-400 animate-jump ease-in-out'>
         <div className='product-detail-close' onClick={closeModal}>
           <Image width={14} height={14} src={exportImg('close')} alt='close' />
         </div>
