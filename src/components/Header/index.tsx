@@ -11,23 +11,31 @@ import { useData } from '../../context/user'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useAuthUser } from '@context/authUser'
+import { CategorysID, useCategory } from '@context/useCategory'
 
 export function Header() {
   const { isAuth } = useAuthUser()
-  // console.log(isAuth)
   const myOrder = useToggle(false)
   const menuDesktop = useToggle(false)
   const menuMobile = useToggle(false)
-
+  const { setCategory } = useCategory()
   const { state: cart } = useData()
 
   if (cart.length === 0 && myOrder.isOpen) {
-    myOrder.setOpen(false);
-    return null;
+    myOrder.setOpen(false)
+    return null
   }
-
+  const changeCategory = (evt: React.MouseEvent<HTMLButtonElement>) => {
+    evt.preventDefault()
+    const id = evt.currentTarget.id
+    const idNumber = parseInt(id) as CategorysID
+    setCategory(idNumber)
+    // }
+  }
   return (
-    <nav className='flex items-center justify-between bg-greenBrand px-6' id='header'>
+    <nav
+      className='flex items-center justify-between bg-greenBrand px-6' id='header'
+    >
       {/* menu mobile */}
       <Image
         src={exportImg('menu')}
@@ -43,22 +51,34 @@ export function Header() {
 
         <ul className='flex gap-5'>
           <li className='rounded-md p-2 font-semibold hover:scale-110'>
-            <Link href='/'>All</Link>
+            <button onClick={changeCategory} id='0'>
+              All
+            </button>
           </li>
           <li className='rounded-md p-2 font-semibold hover:scale-110'>
-            <Link href='/'>Clothes</Link>
+            <button onClick={changeCategory} id='1'>
+              Clothes
+            </button>
           </li>
           <li className='rounded-md p-2 font-semibold hover:scale-110'>
-            <Link href='/'>Electronics</Link>
+            <button onClick={changeCategory} id='2'>
+              Electronics
+            </button>
           </li>
           <li className='rounded-md p-2 font-semibold hover:scale-110'>
-            <Link href='/'>Furnitures</Link>
+            <button onClick={changeCategory} id='3'>
+              Furnitures
+            </button>
           </li>
           <li className='rounded-md p-2 font-semibold hover:scale-110'>
-            <Link href='/'>Toys</Link>
+            <button onClick={changeCategory} id='4'>
+              Toys
+            </button>
           </li>
           <li className='rounded-md p-2 font-semibold hover:scale-110'>
-            <Link href='/'>Others</Link>
+            <button onClick={changeCategory} id='5'>
+              Others
+            </button>
           </li>
         </ul>
       </div>

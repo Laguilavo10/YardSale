@@ -11,6 +11,7 @@ import { AuthProvider } from '@context/authUser'
 // import { Toaster } from 'react-hot-toast'
 // import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client'
+import { CategoryProvider } from '@context/useCategory'
 
 const API = process.env.NEXT_PUBLIC_API_URL ?? ''
 
@@ -26,7 +27,9 @@ function MyApp({ Component, pageProps }: any) {
         <AuthProvider>
           <CartProvider value={[]}>
             {/* <Toaster /> */}
-            <Component {...pageProps} />
+            <CategoryProvider>
+              <Component {...pageProps} />
+            </CategoryProvider>
           </CartProvider>
         </AuthProvider>
       </ApolloProvider>
