@@ -6,7 +6,7 @@ import { adminToggles } from '../../utils/adminToggle'
 import { ChevronDownIcon } from '@heroicons/react/24/solid'
 import { MenuDesktop } from '../MenuDesktop'
 import { MyOrder } from '../MyOrder'
-import { MenuMobile } from '../MenuMobile'
+import { MenuMobile } from '../MenuMobile/index'
 import { useData } from '../../context/user'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -85,7 +85,7 @@ export function Header() {
         style={positionDiv}
       />
       <nav
-        className='flex w-full items-center justify-between bg-greenBrand px-6'
+        className='flex w-full items-center justify-between bg-greenBrand px-6 z-10'
         id='header'>
         {/* Icono Menu Mobile */}
         <Image
@@ -116,7 +116,7 @@ export function Header() {
         <div className='flex h-16 items-center self-end justify-self-end'>
           <ul className='flex items-center gap-6'>
             <li
-              className='cursor-pointer relative'
+              className='relative cursor-pointer'
               onClick={() => adminToggles(myOrder, [menuDesktop, menuMobile])}>
               <Image src={exportImg('cart')} alt='shopping cart' />
               <div className='absolute -right-2 -top-2 flex h-4 w-4 justify-center rounded-full bg-light text-xs font-bold'>
@@ -139,14 +139,14 @@ export function Header() {
             </li>
           </ul>
         </div>
-        {menuDesktop.isOpen && <MenuDesktop />}
-        {menuMobile.isOpen && <MenuMobile />}
-        {myOrder.isOpen && cart.length !== 0 && (
-          <MyOrder
-            closeModal={() => adminToggles(myOrder, [menuDesktop, menuMobile])}
-          />
-        )}
       </nav>
+      {menuDesktop.isOpen && <MenuDesktop />}
+      {menuMobile.isOpen && <MenuMobile />}
+      {myOrder.isOpen && cart.length !== 0 && (
+        <MyOrder
+          closeModal={() => adminToggles(myOrder, [menuDesktop, menuMobile])}
+        />
+      )}
     </>
   )
 }
