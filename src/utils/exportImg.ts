@@ -11,8 +11,23 @@ import addedToCart from '../assets/icons/bt_added_to_cart.svg'
 import flecha from '../assets/icons/flechita.svg'
 import close from '../assets/icons/icon_close.svg'
 
-const IMGS = { iBF, iYS, lBF, lYS, menu, cart, addToCart, addedToCart, flecha, close }
+interface Images {
+  [key: string]: string
+}
 
-export const exportImg = (name) => {
+const IMGS: Images = {
+  iBF,
+  iYS,
+  lBF,
+  lYS,
+  menu,
+  cart,
+  addToCart,
+  addedToCart,
+  flecha,
+  close
+}
+
+export const exportImg = (name: string) => {
   return IMGS[name]
 }
