@@ -1,20 +1,18 @@
 import { PropsWithChildren, createContext, useContext, useState } from 'react'
 
-// type Categorys = 'All' | 'Electronics' | 'Furniture' | 'Shoes' | 'Others'
-export type CategorysID = 0 | 1 | 2 | 3 | 4 | 5
-// All === 0
-// Clothes === 1
-// Electronics === 2
-// Furniture === 3
-// Shoes === 4
-// Others === 5
+// type Categorys =
+export interface CategorysID {
+  id: number
+  title: string
+}
 
 interface CategorysContext {
   category: CategorysID
   setCategory: React.Dispatch<React.SetStateAction<CategorysID>>
 }
+
 const DEFAULT_VALUE: CategorysContext = {
-  category: 0,
+  category: { id: 1, title: 'All' },
   setCategory: () => {}
 }
 const CategoryContext = createContext<CategorysContext>(DEFAULT_VALUE)

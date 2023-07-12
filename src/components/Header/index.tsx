@@ -7,11 +7,11 @@ import { ChevronDownIcon } from '@heroicons/react/24/solid'
 import { MenuDesktop } from '../MenuDesktop'
 import { MyOrder } from '../MyOrder'
 import { MenuMobile } from '../MenuMobile/index'
-import { useData } from '../../context/user'
+import { useCart } from '../../context/useCart'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useAuthUser } from '@context/authUser'
-import { CategorysID, useCategory } from '@context/useCategory'
+import { useCategory } from '@context/useCategory'
 import { useState } from 'react'
 
 const menuItems = [
@@ -48,7 +48,7 @@ export function Header() {
   const menuDesktop = useToggle(false)
   const menuMobile = useToggle(false)
   const { setCategory } = useCategory()
-  const { state: cart } = useData()
+  const { cart } = useCart()
 
   if (cart.length === 0 && myOrder.isOpen) {
     myOrder.setOpen(false)
@@ -57,9 +57,11 @@ export function Header() {
 
   const changeCategory = (evt: React.MouseEvent<HTMLLIElement>) => {
     evt.preventDefault()
-    const id = evt.currentTarget.id
-    const idNumber = parseInt(id) as CategorysID
-    setCategory(idNumber)
+    const { currentTarget } = evt
+    const id = currentTarget.id
+    const name = currentTarget.title
+    const idNumber = parseInt(id)
+    setCategory({ id: idNumber, title: name })
   }
 
   const changeDiv = (evt: React.MouseEvent<HTMLLIElement>) => {
@@ -81,11 +83,11 @@ export function Header() {
   return (
     <>
       <div
-        className='absolute left-0 top-0 box-content hidden rounded bg-black opacity-10 transition-all duration-200 ease-linear md:block'
+        className='pointer-events-none fixed left-0 top-0 z-20 box-content hidden rounded bg-black opacity-10 transition-all duration-200 ease-linear md:block'
         style={positionDiv}
       />
       <nav
-        className='flex w-full items-center justify-between bg-greenBrand px-6 z-10'
+        className='fixed z-10 flex w-full items-center justify-between bg-greenBrand px-6'
         id='header'>
         {/* Icono Menu Mobile */}
         <Image
@@ -107,6 +109,7 @@ export function Header() {
                 onMouseLeave={hideDiv}
                 onClick={changeCategory}
                 id={id.toString()}
+                title={title}
                 className='relative p-2 px-2 font-semibold marker:rounded-md'>
                 <button>{title}</button>
               </li>
@@ -139,14 +142,14 @@ export function Header() {
             </li>
           </ul>
         </div>
+        {menuDesktop.isOpen && <MenuDesktop />}
+        {menuMobile.isOpen && <MenuMobile />}
+        {myOrder.isOpen && cart.length !== 0 && (
+          <MyOrder
+            closeModal={() => adminToggles(myOrder, [menuDesktop, menuMobile])}
+          />
+        )}
       </nav>
-      {menuDesktop.isOpen && <MenuDesktop />}
-      {menuMobile.isOpen && <MenuMobile />}
-      {myOrder.isOpen && cart.length !== 0 && (
-        <MyOrder
-          closeModal={() => adminToggles(myOrder, [menuDesktop, menuMobile])}
-        />
-      )}
     </>
   )
 }

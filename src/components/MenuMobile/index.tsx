@@ -3,7 +3,7 @@ import React from 'react'
 
 export function MenuMobile() {
   return (
-    <div className='fixed left-0 top-0 flex h-screen flex-col justify-evenly border border-greenBrand bg-white p-6 pt-[60px] md:hidden'>
+    <div className=' fixed left-0 top-[63px] flex h-max flex-col justify-evenly border border-greenBrand bg-white p-6 pt-[60px] md:hidden'>
       <ul className='mt-6 flex flex-col gap-2'>
         <li className='mb-4'>
           <Link className='font-bold ' href='/'>

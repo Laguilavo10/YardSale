@@ -70,31 +70,33 @@ export default function Main() {
     }
   `
   const { loading, data } = useQuery(GET_PRODUCTS, {
-    variables: { categoryId: category }
+    variables: { categoryId: category.id }
   })
   const cards = Array(20).fill(null)
-  // console.log(data)
-  // if (error !== undefined) return `Error! ${error.message}`
-
   return (
-    <main className='min- flex h-screen flex-col gap-4 bg-light transition-all duration-100 ease-out'>
+    <main className='min- flex h-screen flex-col bg-light transition-all duration-100 ease-out'>
       <Header />
+
       {/* <CounterProducts
         initial={products[0]?.id}
         final={products[0]?.id + pagination?.limit}
         total={97}
       /> */}
-      {loading && (
-        <section className='main-container bg-light'>
-          <div className='cards-container mb-10 grid grid-cols-[repeat(auto-fill,240px)] place-content-center gap-7'>
-            {cards?.map((_, index) => (
-              <SkeletonCards key={index} />
-            ))}
-          </div>
+      <div className='flex flex-col gap-8 mt-[60px]'>
+        <section className='flex h-56 w-full items-center justify-center bg-white text-9xl uppercase tracking-wider '>
+          {category.title}
         </section>
-      )}
-      <Products products={data?.products} />
-      {/* <Pagination pagination={pagination} setPagination={setPagination} /> */}
+        {loading && (
+          <section className='main-container bg-light'>
+            <div className='cards-container mb-10 grid grid-cols-[repeat(auto-fill,240px)] place-content-center gap-7'>
+              {cards?.map((_, index) => (
+                <SkeletonCards key={index} />
+              ))}
+            </div>
+          </section>
+        )}
+        <Products products={data?.products} />
+      </div>
     </main>
   )
 }
