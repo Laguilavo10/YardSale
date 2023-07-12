@@ -1,5 +1,4 @@
 import '@styles/globals.css'
-import '@styles/ProductDetails.css'
 import '@styles/Login.css'
 import '@styles/Dashboard.css'
 import { CartProvider } from '@context/useCart'

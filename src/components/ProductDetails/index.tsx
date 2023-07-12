@@ -26,10 +26,25 @@ export function ProductDetails({
   }
   return (
     <>
-      <div className={`${isOpen === true ? 'bg-[#00000098] w-screen h-screen fixed z-[100] top-0 bottom-0 right-0 left-0' : ''}`} />
-      <aside className='product-detail animate-duration-400 animate-jump ease-in-out'>
-        <div className='product-detail-close' onClick={closeModal}>
-          <Image width={14} height={14} src={exportImg('close')} alt='close' />
+      <div
+        className={`${
+          isOpen === true
+            ? 'fixed bottom-0 left-0 right-0 top-0 z-10 h-screen w-screen bg-[#00000098]'
+            : ''
+        }`}
+      />
+      <aside className='animate-duration-400 fixed top-0 bottom-0 z-30 m-auto flex h-min animate-jump flex-col justify-self-center rounded-3xl bg-white p-3 pb-6 ease-in-out md:bottom-0 md:top-0 md:flex-row w-3/6 min-w-[350px]'>
+        <div
+          className='product-detail-close absolute left-6 top-6 z-10 flex items-center justify-center rounded-full bg-white p-2 shadow-2xl'
+          onClick={closeModal}
+        >
+          <Image
+            width={14}
+            height={14}
+            src={exportImg('close')}
+            alt='close'
+            className='h-4 w-4'
+          />
         </div>
         <LoadingSkeleton>
           <Image
@@ -40,11 +55,11 @@ export function ProductDetails({
             className='h-[360px] w-[350px] animate-fade-down object-cover duration-200'
           />
         </LoadingSkeleton>
-        <div className='product-detail-info'>
-          <p>${data.price}</p>
-          <p>{data.title}</p>
-          <p>{data.description}</p>
-          <button className='primary-button add-to-cart-button'>
+        <div className=' md:w-64 p-6'>
+          <p className='mb-1 text-lg font-bold'>${data.price}</p>
+          <p className='mb-5 text-lg font-semibold'>{data.title}</p>
+          <p className='mb-9'>{data.description}</p>
+          <button className='flex w-full cursor-pointer items-center justify-evenly rounded-lg bg-greenBrand text-lg font-bold text-white'>
             <Image
               width={50}
               height={50}
