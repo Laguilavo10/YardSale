@@ -1,9 +1,8 @@
 import '@styles/globals.css'
 import '@styles/ProductDetails.css'
 import '@styles/Login.css'
-import '@styles/MyOrder.css'
 import '@styles/Dashboard.css'
-import { CartProvider } from '@context/user'
+import { CartProvider } from '@context/useCart'
 import { AuthProvider } from '@context/authUser'
 // import { Toaster } from 'react-hot-toast'
 // import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
@@ -22,7 +21,7 @@ function MyApp({ Component, pageProps }: any) {
     <>
       <ApolloProvider client={queryClient}>
         <AuthProvider>
-          <CartProvider value={[]}>
+          <CartProvider>
             {/* <Toaster /> */}
             <CategoryProvider>
               <Component {...pageProps} />

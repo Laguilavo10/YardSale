@@ -1,14 +1,14 @@
 // import { useEffect, useState } from 'react'
 import { ProductCard } from '../ProductCard'
 // import "../../styles/Products.css"
-// import { useData } from '../../context/user'
+// import { useCart } from '../../context/user'
 import { Product } from 'types'
 
 interface Props {
   products: Product[] | undefined
 }
 
-export function Products ({ products }: Props) {
+export function Products({ products }: Props) {
   // const [data, setData] = useState([])
 
   // useEffect(() => {
@@ -19,14 +19,14 @@ export function Products ({ products }: Props) {
   //     .then((info) => setData(info))
   // }, [])
 
-  // const { setState: setCart } = useData()
+  // const { setState: setCart } = useCart()
   // es diferente card(info producto) != cart (carrito de compras)
 
   return (
     <>
       {/* {data.length === 0 && <h1>Cargando... no desesperes</h1>} */}
       <section className='main-container bg-light'>
-        <div className='grid gap-7 place-content-center mb-10 grid-cols-[repeat(auto-fill,240px)] cards-container'>
+        <div className='cards-container mb-10 grid grid-cols-[repeat(auto-fill,240px)] place-content-center gap-7'>
           {products?.map((card, index) => (
             <ProductCard key={index} dataCard={card} />
           ))}
