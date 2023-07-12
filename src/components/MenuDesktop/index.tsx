@@ -25,7 +25,7 @@ export function MenuDesktop() {
             <Link href='/dashboard'>Dashboard</Link>
           </li>
         )}
-        <li className='border-t border-light py-2 font-medium text-greenBrand '>
+        <li className='border-t border-light py-2 font-bold text-greenBrand '>
           <button onClick={singOut}>Sign out</button>
         </li>
       </ul>
