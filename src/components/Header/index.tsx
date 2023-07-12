@@ -10,7 +10,7 @@ import { MenuMobile } from '../MenuMobile/index'
 import { useCart } from '../../context/useCart'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useAuthUser } from '@context/authUser'
+// import { useAuthUser } from '@context/authUser'
 import { useCategory } from '@context/useCategory'
 import { useState } from 'react'
 
@@ -42,7 +42,7 @@ const menuItems = [
 ]
 
 export function Header() {
-  const { isAuth } = useAuthUser()
+  // const { isAuth } = useAuthUser()
   const [positionDiv, setPositionDiv] = useState({})
   const myOrder = useToggle(false)
   const menuDesktop = useToggle(false)
@@ -129,12 +129,12 @@ export function Header() {
             <li className='hidden cursor-pointer items-center gap-3 rounded-md bg-light px-4 py-2 text-black md:flex'>
               <Image
                 className='rounded-full '
-                src={isAuth.avatar ?? 'https://media.istockphoto.com/id/1337144146/vector/default-avatar-profile-icon-vector.jpg?s=612x612&w=0&k=20&c=BIbFwuv7FxTWvh5S3vB6bkT0Qv8Vn8N5Ffseq84ClGI='}
+                src='https://media.istockphoto.com/id/1337144146/vector/default-avatar-profile-icon-vector.jpg?s=612x612&w=0&k=20&c=BIbFwuv7FxTWvh5S3vB6bkT0Qv8Vn8N5Ffseq84ClGI='
                 alt='avatar'
                 width={30}
                 height={30}
               />
-              <div className='text-sm'>{isAuth.email ?? 'example@gmail.com'}</div>
+              <div className='text-sm'>example@gmail.com</div>
               <ChevronDownIcon
                 className='h-5 w-5 fill-gray-500 stroke-gray-500'
                 onClick={() => adminToggles(menuDesktop, myOrder)}

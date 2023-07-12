@@ -14,8 +14,9 @@ export function LoadingSkeleton({
   return (
     <div
       className={`${
-        !isImgLoaded && 'animate-pulse'
-      } overflow-hidden rounded-lg bg-slate-300`}>
+        !isImgLoaded ? 'animate-pulse' : ''
+      } overflow-hidden rounded-lg bg-slate-300`}
+    >
       {modifyChildren}
     </div>
   )

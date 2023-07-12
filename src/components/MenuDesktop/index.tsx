@@ -1,10 +1,10 @@
-import { useAuthUser } from '@context/authUser'
+// import { useAuthUser } from '@context/authUser'
 import Cookies from 'js-cookie'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 
 export function MenuDesktop() {
-  const { isAuth } = useAuthUser()
+  // const { isAuth } = useAuthUser()
   const router = useRouter()
   const singOut = (evt: React.MouseEvent<HTMLButtonElement>) => {
     evt.preventDefault()
@@ -20,11 +20,11 @@ export function MenuDesktop() {
         <li className='font-bold'>
           <Link href='/'>My account</Link>
         </li>
-        {isAuth.role === 'admin' && (
+        {/* {isAuth.role === 'admin' && (
           <li>
             <Link href='/dashboard'>Dashboard</Link>
           </li>
-        )}
+        )} */}
         <li className='border-t border-light py-2 font-bold text-greenBrand '>
           <button onClick={singOut}>Sign out</button>
         </li>
