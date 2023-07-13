@@ -13,6 +13,8 @@ import { Products } from '@components/Products'
 import { useQuery, gql } from '@apollo/client'
 import { useCategory } from '@context/useCategory'
 import SkeletonCards from '@components/SkeletonCards'
+import { Pagination } from '@components/Pagination'
+import { useState, useEffect } from 'react'
 // import { requester } from '@services/API'
 // import { Product } from 'types'
 // const LIMIT = 20
@@ -70,32 +72,49 @@ export default function Main() {
     }
   `
   const { loading, data } = useQuery(GET_PRODUCTS, {
-    variables: { categoryId: category.id }
+    variables: { categoryId: category?.id || 1 }
   })
-  const cards = Array(20).fill(null)
+  console.log(category.id)
+  const [currentItems, setCurrentItems] = useState(data?.products)
+  useEffect(() => {
+    if (loading) {
+      return // Espera a que se carguen los datos
+    }
+    setCurrentItems(data.products)
+  }, [data, loading])
+
   return (
     <main className='min- flex h-screen flex-col bg-light transition-all duration-100 ease-out'>
       <Header />
 
       {/* <CounterProducts
-        initial={products[0]?.id}
+        initial={data?.products[0]?.id}
         final={products[0]?.id + pagination?.limit}
         total={97}
       /> */}
-      <div className='flex flex-col gap-8 mt-[60px]'>
+      <div className='mt-[60px] flex flex-col gap-8'>
         <section className='flex h-56 w-full items-center justify-center bg-white text-9xl uppercase tracking-wider '>
           {category.title}
         </section>
-        {loading && (
-          <section className='main-container bg-light'>
+        <section className='main-container bg-light'>
+          {loading && (
             <div className='cards-container mb-10 grid grid-cols-[repeat(auto-fill,240px)] place-content-center gap-7'>
-              {cards?.map((_, index) => (
-                <SkeletonCards key={index} />
-              ))}
+              {Array(20)
+                .fill(null)
+                .map((_, index) => (
+                  <SkeletonCards key={index} />
+                ))}
             </div>
-          </section>
-        )}
-        <Products products={data?.products} />
+          )}
+          <Products products={currentItems} />
+          {currentItems && (
+            <Pagination
+              itemsPerPage={3}
+              data={data?.products}
+              setCurrentItems={setCurrentItems}
+            />
+          )}
+        </section>
       </div>
     </main>
   )

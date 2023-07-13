@@ -31,7 +31,7 @@ export function ProductCard({ dataCard }: { dataCard: Product }) {
   // Es diferente cart != card, (cart = carrito) / (card = tarjeta del producto)
   return (
     <>
-      <div className='duration-600 flex flex-col justify-around rounded-lg bg-white p-4 transition-all ease-in-out hover:scale-105 hover:shadow-2xl'>
+      <div className='duration-600 flex flex-col justify-around rounded-lg bg-white p-4 transition-all ease-in-out md:hover:scale-105 hover:shadow-2xl '>
         <LoadingSkeleton>
           <Image
             width='300'

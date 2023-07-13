@@ -22,6 +22,7 @@
     "react-chartjs-2": "^5.2.0",
     "react-dom": "18.2.0",
     "react-hot-toast": "^2.4.0",
+    "react-paginate": "^8.1.5",
     "tailwindcss-animated": "^1.0.1"
   },
   "devDependencies": {
@@ -29,6 +30,7 @@
     "@types/node": "20.4.1",
     "@types/react": "18.2.14",
     "@types/react-dom": "18.2.7",
+    "@types/react-paginate": "^7.1.1",
     "autoprefixer": "^10.4.14",
     "postcss": "^8.4.23",
     "prettier": "^2.8.7",
@@ -41,7 +43,8 @@
     "rules": {
       "@typescript-eslint/explicit-function-return-type": "off",
       "@typescript-eslint/space-before-function-paren": "off",
-      "@typescript-eslint/strict-boolean-expressions":"off"
+      "@typescript-eslint/strict-boolean-expressions": "off",
+      "multiline-ternary": "off"
     },
     "parserOptions": {
       "project": "./tsconfig.json"
