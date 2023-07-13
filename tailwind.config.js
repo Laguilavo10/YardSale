@@ -13,6 +13,9 @@ module.exports = {
       colors: {
         light: '#e1e5e7',
         greenBrand: '#ACD9B2'
+      },
+      backgroundImage: {
+        polka: 'radial-gradient(#79be83 2px, #FFFFFF 2px)'
       }
     }
   },

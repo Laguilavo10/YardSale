@@ -87,7 +87,7 @@ export default function Main() {
       <Header />
 
       <div className='mt-[60px] flex flex-col gap-8'>
-        <section className='flex h-56 w-full items-center justify-center bg-white text-9xl uppercase tracking-wider '>
+        <section className='flex h-56 w-full items-center justify-center bg-white text-6xl  lg:text-9xl uppercase tracking-wider opacity-70 bg-polka bg-[length:40px_40px]'>
           {category.title}
         </section>
         <section className='main-container bg-light'>
