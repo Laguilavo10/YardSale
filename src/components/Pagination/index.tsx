@@ -33,17 +33,17 @@ export function Pagination({ itemsPerPage, data, setCurrentItems }: Props) {
           marginPagesDisplayed={2}
           pageCount={pageCount}
           previousLabel='< Anterior'
-          pageClassName='border border-slate-400  rounded cursor-pointer'
-          pageLinkClassName='flex w-full h-full py-1 px-3  items-center'
-          previousClassName='border border-slate-400 rounded'
-          previousLinkClassName='flex w-full h-full p-1 text-sm'
-          nextClassName='border border-slate-400 rounded'
-          nextLinkClassName='flex w-full h-full p-1 text-sm'
+          pageClassName='border border-slate-400  rounded-md cursor-pointer bg-white/70'
+          pageLinkClassName='flex w-full h-full px-3 items-center justify-center'
+          nextLinkClassName='flex w-full h-full p-2 items-center justify-center text-sm bg-white/70 rounded-md border border-slate-400'
+          previousLinkClassName='flex w-full h-full p-2 items-center justify-center text-sm bg-white/70 rounded-md border border-slate-400'
+          previousClassName=''
+          nextClassName=''
           breakLabel='...'
-          breakClassName='page-item'
+          breakClassName='flex justify-center'
           breakLinkClassName='page-link'
-          containerClassName='bg-white flex p-2 m-auto max-w-fit rounded-md gap-3 bg-opacity-80 shadow-2xl  w-[200px] flex-col sm:flex-row'
-          activeClassName='bg-orange-400'
+          containerClassName=' m-auto flex p-2 justify-end rounded-md-md gap-3 bg-opacity-80 flex-col sm:flex-row font-bold w-[200px] md:w-auto'
+          activeClassName='!bg-greenBrand'
           renderOnZeroPageCount={null}
         />
       )}

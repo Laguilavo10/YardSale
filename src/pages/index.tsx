@@ -72,9 +72,8 @@ export default function Main() {
     }
   `
   const { loading, data } = useQuery(GET_PRODUCTS, {
-    variables: { categoryId: category?.id || 1 }
+    variables: { categoryId: category?.id || 0 }
   })
-  console.log(category.id)
   const [currentItems, setCurrentItems] = useState(data?.products)
   useEffect(() => {
     if (loading) {
@@ -87,11 +86,6 @@ export default function Main() {
     <main className='min- flex h-screen flex-col bg-light transition-all duration-100 ease-out'>
       <Header />
 
-      {/* <CounterProducts
-        initial={data?.products[0]?.id}
-        final={products[0]?.id + pagination?.limit}
-        total={97}
-      /> */}
       <div className='mt-[60px] flex flex-col gap-8'>
         <section className='flex h-56 w-full items-center justify-center bg-white text-9xl uppercase tracking-wider '>
           {category.title}
@@ -109,7 +103,7 @@ export default function Main() {
           <Products products={currentItems} />
           {currentItems && (
             <Pagination
-              itemsPerPage={3}
+              itemsPerPage={20}
               data={data?.products}
               setCurrentItems={setCurrentItems}
             />
