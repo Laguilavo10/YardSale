@@ -31,16 +31,16 @@ export function MyOrder({ closeModal }: Props) {
         <p className='text-xl font-bold'>My order</p>
       </div>
 
-      <div className='my-4 flex flex-col gap-3'>
+      <div className='my-4 flex h-[200px] flex-col gap-3 overflow-y-scroll'>
         {cart.map((item, index) => (
-          <div className='flex items-center gap-4 ' key={item.id}>
+          <div className='grid-cols-[auto_1fr_auto_auto] grid items-center gap-4 pr-2' key={item.id}>
             <figure className='w-28'>
               <Image
                 width={100}
                 height={100}
                 src={item.images[0]}
                 alt='bike'
-                className='rounded-xl object-cover'
+                className='h-28 w-28 rounded-xl object-cover'
               />
             </figure>
             <p>{item.title}</p>
@@ -50,21 +50,20 @@ export function MyOrder({ closeModal }: Props) {
               height={15}
               src={exportImg('close')}
               alt='close'
-              className='pointer'
+              className='justify-self-start self-start'
               onClick={() => deleteItem(index)}
             />
           </div>
         ))}
-
-        <div className='order mx-3 flex items-center justify-between'>
-          <p className='text-lg'>Total</p>
-          <p className='text-3xl font-semibold'>${total}</p>
-        </div>
-
-        <button className='h-14 w-full cursor-pointer rounded-lg border-none bg-greenBrand text-lg font-bold text-white'>
-          Checkout
-        </button>
       </div>
+      <div className='order mx-3 my-2 flex items-center justify-between'>
+        <p className='text-lg'>Total</p>
+        <p className='text-3xl font-semibold'>${total}</p>
+      </div>
+
+      <button className='h-14 w-full cursor-pointer rounded-lg border-none bg-greenBrand text-lg font-bold text-black transition-transform duration-150 ease-in-out hover:scale-110'>
+        Checkout
+      </button>
     </aside>
   )
 }
