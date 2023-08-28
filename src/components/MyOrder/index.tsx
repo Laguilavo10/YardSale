@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import React from 'react'
 import { useCart } from '../../context/useCart'
 import { exportImg } from '../../utils/exportImg'
@@ -21,7 +20,7 @@ export function MyOrder({ closeModal }: Props) {
   return (
     <aside className='fixed right-0 top-0 z-30 mt-[66px] w-auto max-w-[360px] rounded-md bg-white p-6 shadow-2xl transition-all duration-200'>
       <div className='flex cursor-pointer ' onClick={closeModal}>
-        <Image
+        <img
           width={15}
           height={15}
           src={exportImg('flecha')}
@@ -33,9 +32,12 @@ export function MyOrder({ closeModal }: Props) {
 
       <div className='my-4 flex h-[200px] flex-col gap-3 overflow-y-scroll'>
         {cart.map((item, index) => (
-          <div className='grid-cols-[auto_1fr_auto_auto] grid items-center gap-4 pr-2' key={item.id}>
+          <div
+            className='grid grid-cols-[auto_1fr_auto_auto] items-center gap-4 pr-2'
+            key={item.id}
+          >
             <figure className='w-28'>
-              <Image
+              <img
                 width={100}
                 height={100}
                 src={item.images[0]}
@@ -45,12 +47,12 @@ export function MyOrder({ closeModal }: Props) {
             </figure>
             <p>{item.title}</p>
             <p className='font-bold'>${item.price}</p>
-            <Image
+            <img
               width={15}
               height={15}
               src={exportImg('close')}
               alt='close'
-              className='justify-self-start self-start'
+              className='self-start justify-self-start'
               onClick={() => deleteItem(index)}
             />
           </div>

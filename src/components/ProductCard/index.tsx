@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import { useState } from 'react'
 import { useCart } from '../../context/useCart'
 import { exportImg } from '../../utils/exportImg'
@@ -31,9 +30,9 @@ export function ProductCard({ dataCard }: { dataCard: Product }) {
   // Es diferente cart != card, (cart = carrito) / (card = tarjeta del producto)
   return (
     <>
-      <div className='duration-600 flex flex-col justify-around rounded-lg bg-white p-4 transition-all ease-in-out md:hover:scale-105 hover:shadow-2xl '>
+      <div className='duration-600 flex flex-col justify-around rounded-lg bg-white p-4 transition-all ease-in-out hover:shadow-2xl md:hover:scale-105 '>
         <LoadingSkeleton>
-          <Image
+          <img
             width='300'
             height='300'
             onClick={showDetails}
@@ -48,7 +47,7 @@ export function ProductCard({ dataCard }: { dataCard: Product }) {
             <p className='mt-1 text-sm text-gray-500'>{title}</p>
           </div>
           <figure className='m-0 cursor-pointer'>
-            <Image
+            <img
               className='h-9 w-9'
               width='100'
               height='100'

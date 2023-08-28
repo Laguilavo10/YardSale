@@ -12,7 +12,13 @@ import flecha from '../assets/icons/flechita.svg'
 import close from '../assets/icons/icon_close.svg'
 
 interface Images {
-  [key: string]: string
+  [key: string]: {
+    blurHeight: number
+    blurWidth: number
+    height: number
+    src: string
+    width: number
+  }
 }
 
 const IMGS: Images = {
@@ -29,5 +35,5 @@ const IMGS: Images = {
 }
 
 export const exportImg = (name: string) => {
-  return IMGS[name]
+  return IMGS[name].src
 }

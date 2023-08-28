@@ -55,7 +55,7 @@
 //     <>
 //       <div className='login'>
 //         <div className='form-container'>
-//           <Image src={exportImg('lYS')} alt='logo' className='logo' />
+//           <img src={exportImg('lYS')} alt='logo' className='logo' />
 
 //           <form className='form' onSubmit={validateUser} ref={form}>
 //             <label htmlFor='email' className='label'>

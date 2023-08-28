@@ -1,5 +1,4 @@
 // import "../../styles/ProductDetails.css"
-import Image from 'next/image'
 import { exportImg } from '../../utils/exportImg'
 import { LoadingSkeleton } from '@components/LoadingSkeleton'
 
@@ -33,12 +32,12 @@ export function ProductDetails({
             : ''
         }`}
       />
-      <aside className='animate-duration-400 fixed top-0 bottom-0 z-30 m-auto flex h-min animate-jump flex-col justify-self-center rounded-3xl bg-white p-3 pb-6 ease-in-out md:bottom-0 md:top-0 md:flex-row w-3/6 min-w-[350px]'>
+      <aside className='animate-duration-400 fixed bottom-0 top-0 z-30 m-auto flex h-min w-3/6 min-w-[350px] animate-jump flex-col justify-self-center rounded-3xl bg-white p-3 pb-6 ease-in-out md:bottom-0 md:top-0 md:flex-row'>
         <div
           className='product-detail-close absolute left-6 top-6 z-10 flex items-center justify-center rounded-full bg-white p-2 shadow-2xl'
           onClick={closeModal}
         >
-          <Image
+          <img
             width={14}
             height={14}
             src={exportImg('close')}
@@ -47,7 +46,7 @@ export function ProductDetails({
           />
         </div>
         <LoadingSkeleton>
-          <Image
+          <img
             width={1000}
             height={1000}
             src={data.images[0]}
@@ -55,12 +54,12 @@ export function ProductDetails({
             className='h-[360px] w-[350px] animate-fade-down object-cover duration-200'
           />
         </LoadingSkeleton>
-        <div className=' md:w-64 p-6'>
+        <div className=' p-6 md:w-64'>
           <p className='mb-1 text-lg font-bold'>${data.price}</p>
           <p className='mb-5 text-lg font-semibold'>{data.title}</p>
           <p className='mb-9'>{data.description}</p>
           <button className='flex w-full cursor-pointer items-center justify-evenly rounded-lg bg-greenBrand text-lg font-bold text-white'>
-            <Image
+            <img
               width={50}
               height={50}
               src={exportImg(isAdded)}

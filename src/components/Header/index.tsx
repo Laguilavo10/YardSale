@@ -8,7 +8,6 @@ import { MenuDesktop } from '../MenuDesktop'
 import { MyOrder } from '../MyOrder'
 import { MenuMobile } from '../MenuMobile/index'
 import { useCart } from '../../context/useCart'
-import Image from 'next/image'
 import Link from 'next/link'
 // import { useAuthUser } from '@context/authUser'
 import { useCategory } from '@context/useCategory'
@@ -88,9 +87,10 @@ export function Header() {
       />
       <nav
         className='fixed z-10 flex w-full items-center justify-between bg-greenBrand px-6'
-        id='header'>
+        id='header'
+      >
         {/* Icono Menu Mobile */}
-        <Image
+        <img
           src={exportImg('menu')}
           alt='menu'
           className='flex md:hidden'
@@ -98,7 +98,7 @@ export function Header() {
         />
         {/*  */}
         <Link href='/' className=''>
-          <Image src={exportImg('lYS')} alt='logo' className='logo-mobile' />
+          <img src={exportImg('lYS')} alt='logo' className='logo-mobile' />
         </Link>
         <div className='hidden min-w-min gap-10 md:flex'>
           <ul className='relative ml-5 hidden gap-5 md:flex'>
@@ -110,7 +110,8 @@ export function Header() {
                 onClick={changeCategory}
                 id={id.toString()}
                 title={title}
-                className='relative p-2 px-2 font-semibold marker:rounded-md'>
+                className='relative p-2 px-2 font-semibold marker:rounded-md'
+              >
                 <button>{title}</button>
               </li>
             ))}
@@ -120,14 +121,15 @@ export function Header() {
           <ul className='flex items-center gap-6'>
             <li
               className='relative cursor-pointer'
-              onClick={() => adminToggles(myOrder, [menuDesktop, menuMobile])}>
-              <Image src={exportImg('cart')} alt='shopping cart' />
+              onClick={() => adminToggles(myOrder, [menuDesktop, menuMobile])}
+            >
+              <img src={exportImg('cart')} alt='shopping cart' />
               <div className='absolute -right-2 -top-2 flex h-4 w-4 justify-center rounded-full bg-light text-xs font-bold'>
                 {cart.length}
               </div>
             </li>
             <li className='hidden cursor-pointer items-center gap-3 rounded-md bg-light px-4 py-2 text-black md:flex'>
-              <Image
+              <img
                 className='rounded-full '
                 src='https://media.istockphoto.com/id/1337144146/vector/default-avatar-profile-icon-vector.jpg?s=612x612&w=0&k=20&c=BIbFwuv7FxTWvh5S3vB6bkT0Qv8Vn8N5Ffseq84ClGI='
                 alt='avatar'
